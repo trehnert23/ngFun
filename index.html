@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Title</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-app="ngFun">
+
+	<div ng-controller="PokemonCtrl">
+
+		<!-- adding your trainer name -->
+		<!-- makes Ash default until name typed in -->
+		<H1>Trainer: {{ trainer.name || "Ash" }}</H1>
+		<span>Enter your name:</span>
+		<input ng-model="trainer.name"/>
+
+		<!-- viewing catchprase variable with uppercase filter -->
+		<pre>{{ catchphrase | uppercase }}</pre>
+
+
+		<!-- searching for pokemon -->
+		<form>
+		    <div class="form-group">
+		      <div class="input-group">
+		        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+		        <input type="text" class="form-control" placeholder="Find Your Pokemon" ng-model="searchPokemon">
+		      </div>      
+		    </div>
+		  </form>
+		<!-- creating table of pokemon sorted by Ndex -->
+		<table class="table table-striped">
+			<tr>
+				<th>Ndex</th>
+				<th>Name</th>
+				<th>Type</th>
+			</tr>	
+			<tr ng-repeat="x in pokemon | orderBy: 'Ndex' | filter:searchPokemon">
+				<td>{{ x.Ndex }}</td>
+				<td>{{ x.name }}</td>
+				<td>{{ x.type }}</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>
+
+
