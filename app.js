@@ -8399,7 +8399,7 @@ app.controller("PokemonCtrl", function($scope) {
 	];
 
 
-	$scope.currentID = 1;
+	$scope.currentID = 242;
 
 	$scope.currentItem = $scope.info_highlighted[$scope.currentID];
 
